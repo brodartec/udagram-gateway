@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-gateway
+  labels:
+    app: udagram-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-gateway
+  template:
+    metadata:
+      labels:
+        app: udagram-gateway
+    spec:
+      containers:
+      - image: brodarte/udagram-gateway
+        name: udagram-gateway
+        imagePullPolicy: Always               
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
+
